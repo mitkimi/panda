@@ -1,0 +1,21 @@
+.page {
+  .section {
+    margin-top: 15px;
+    .title {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .name {
+      font-weight: bold;
+    }
+
+    .content {
+
+    }
+    .status-check, .fast-access, .recent-access {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  }
+}

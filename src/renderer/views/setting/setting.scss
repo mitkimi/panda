@@ -1,0 +1,26 @@
+.page {
+  .section {
+    margin-top: 15px;
+  }
+  .user-info-box {
+    border-radius: 4px;
+    padding: 10px;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    .user-info {
+      .name {
+        font-size: 14px;
+        font-weight: bold;
+      }
+      .email {
+        font-size: 12px;
+      }
+    }
+    .btn-box {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+}

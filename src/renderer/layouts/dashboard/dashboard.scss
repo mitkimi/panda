@@ -1,0 +1,18 @@
+.layout {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  overflow: hidden;
+  .navigation {
+    width: 200px;
+    background: #ffffff;
+  }
+  .page {
+    width: calc(100vw - 200px);
+    background: #efeff3;
+    padding: 5px;
+    padding-right: 20px;
+  }
+}
