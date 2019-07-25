@@ -14,7 +14,9 @@ Vue.config.productionTip = false
 Vue.use(Antd)
 
 const appInfo = {
-  appId: 'cli_9dbc613a9d7f510c'
+  appId: 'cli_9dbc613a9d7f510c',
+  appSecret: 'sYd8DoGq26o5oSJEdyXKLd6fcfD1Qi2A'
+
 }
 Vue.prototype.$appInfo = appInfo
 
