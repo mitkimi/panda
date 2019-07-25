@@ -1,5 +1,6 @@
 import Background from './background'
 import { larkPost } from '../../utils/ipAxios'
+
 const APP = {
   components: {
     Background
