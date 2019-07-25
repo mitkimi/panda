@@ -9,7 +9,6 @@ const APP = {
     return {}
   },
   mounted () {
-    console.log(localStorage.code)
     // this.$router.push({
     //   path: '/signin'
     // })
@@ -17,15 +16,14 @@ const APP = {
   },
   methods: {
     async initUserLoginStatus () {
-      const obj = {
+      const params = {
         app_id: this.$appInfo.appId,
         app_secret: this.$appInfo.appSecret,
         grant_type: 'authorization_code',
         code: localStorage.code
       }
       const url = 'https://open.feishu.cn/connect/qrconnect/oauth2/access_token/'
-      const params = {}
-      const { data: res } = await larkPost(url, params, obj)
+      const { data: res } = await larkPost(url, params)
       console.log('aaaa=>', res)
     }
   }

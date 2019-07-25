@@ -70,7 +70,7 @@ export function post (url, params = {}) {
  */
 export function larkPost (url, params = {}) {
   return new Promise((resolve, reject) => {
-    axios.post(url, qs.stringify(params))
+    axios.post(url, params)
       .then(function (response) {
         resolve(response)
       })
