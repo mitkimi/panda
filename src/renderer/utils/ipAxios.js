@@ -68,24 +68,24 @@ export function post (url, params = {}) {
  * @param data
  * @returns {Promise}
  */
-export function larkPost (url, params = {}, { appId, appSecret, appAccessToken, grantType, refreshToken }) {
-  if (appId) {
-    axios.defaults.headers.post['app_id'] = appId
-  }
-  if (appSecret) {
-    axios.defaults.headers.post['app_secret'] = appSecret
-  }
-  if (appAccessToken) {
-    axios.defaults.headers.post['app_access_token'] = appAccessToken
-  }
-  if (grantType) {
-    axios.defaults.headers.post['grant_type'] = grantType
-  }
-  if (refreshToken) {
-    axios.defaults.headers.post['refresh_token'] = refreshToken
-  }
-  axios.defaults.headers.post['code'] = localStorage.code
-  axios.defaults.headers.post['Content-Type'] = 'application/json'
+export function larkPost (url, params = {}) {
+  // if (appId) {
+  //   axios.defaults.headers.post['app_id'] = appId
+  // }
+  // if (appSecret) {
+  //   axios.defaults.headers.post['app_secret'] = appSecret
+  // }
+  // if (appAccessToken) {
+  //   axios.defaults.headers.post['app_access_token'] = appAccessToken
+  // }
+  // if (grantType) {
+  //   axios.defaults.headers.post['grant_type'] = grantType
+  // }
+  // if (refreshToken) {
+  //   axios.defaults.headers.post['refresh_token'] = refreshToken
+  // }
+  // axios.defaults.headers.post['code'] = localStorage.code
+  // axios.defaults.headers.post['Content-Type'] = 'application/json'
 
   return new Promise((resolve, reject) => {
     axios.post(url, qs.stringify(params))
