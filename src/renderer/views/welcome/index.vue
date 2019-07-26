@@ -2,7 +2,7 @@
   <div class="page">
     <h4>欢迎</h4>
     <div class="section">
-      <div class="name">申旭凌</div>
+      <div class="name">{{userInfo.name}}</div>
       <div class="email">shenxuling.95@jiyunhudong.com</div>
     </div>
     <div class="section">

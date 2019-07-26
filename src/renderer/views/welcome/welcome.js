@@ -5,6 +5,9 @@ const APP = {
   },
   data () {
     return {
+      userInfo: {
+        name: localStorage.name
+      },
       statusCheck: [
         {
           icon: '',

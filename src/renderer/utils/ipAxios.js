@@ -1,15 +1,18 @@
 import axios from 'axios'
-import router from '../router'
 import qs from 'qs'
 
-const useToken = true
+const useToken = false
 
 axios.defaults.timeout = 200000
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = false
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 if (useToken) {
   axios.defaults.headers.get['token'] = localStorage.token
   axios.defaults.headers.post['token'] = localStorage.token
+}
+if (localStorage.access_token) {
+  axios.defaults.headers.get['Authorization'] = `Bearer ${localStorage.access_token}`
+  axios.defaults.headers.post['Authorization'] = `Bearer ${localStorage.access_token}`
 }
 
 /**
@@ -26,11 +29,6 @@ export function fetch (url, params = {}) {
     })
       .then((response) => {
         resolve(response)
-        if (response.data.code * 1 === 333) {
-          router.push({
-            path: '/signin'
-          })
-        }
       })
       .catch((err) => {
         reject(err)
@@ -46,17 +44,35 @@ export function fetch (url, params = {}) {
  */
 export function post (url, params = {}) {
   return new Promise((resolve, reject) => {
-    axios.post(url, qs.stringify(params))
+    axios.post(url, qs.stringify(params, { indices: false }))
       .then(function (response) {
         resolve(response)
-        // 在所有 post 接口出现 -1000 状态时直接跳去登录
-        if (response.data.code * 1 === 333) {
-          router.push({
-            path: '/signin'
-          })
-        }
       })
       .catch(function (error) {
+        reject(error)
+      })
+  })
+}
+
+/**
+ * 封装larkget方法
+ * @param url
+ * @param data
+ * @returns {Promise}
+ */
+export function larkGet (url, params = {}) {
+  return new Promise((resolve, reject) => {
+    axios.get(url, params)
+      .then(function (response) {
+        console.log('response===>', response)
+        resolve(response)
+      })
+      .catch(function (error) {
+        console.log('error===>', error.response.status)
+        if (error.response.status === 400) {
+          resolve(error)
+          return
+        }
         reject(error)
       })
   })
@@ -72,9 +88,15 @@ export function larkPost (url, params = {}) {
   return new Promise((resolve, reject) => {
     axios.post(url, params)
       .then(function (response) {
+        console.log('response===>', response)
         resolve(response)
       })
       .catch(function (error) {
+        console.log('error===>', error.response.status)
+        if (error.response.status === 400) {
+          resolve(error)
+          return
+        }
         reject(error)
       })
   })

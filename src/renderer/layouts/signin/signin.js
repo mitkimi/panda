@@ -40,7 +40,10 @@ const APP = {
         console.log('已经登录')
         localStorage.code = paraObj.code
         this.$router.push({
-          path: '/dashboard/welcome'
+          path: '/',
+          query: {
+            from: 'login'
+          }
         })
         clearInterval(this.timer)
       }
