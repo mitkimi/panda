@@ -15,7 +15,7 @@ const APP = {
           url: 'https://www.google.cn/intl/zh-CN/chrome/'
         },
         {
-          icon: '',
+          icon: require('./images/feishu.png'),
           name: 'Lark 飞书',
           desc: '新一代企业生产力套件',
           linkText: '去下载',

@@ -46,7 +46,7 @@ const APP = {
       spinText: '正在连接...',
       isLoading: false,
       lane: {
-        choose: 'auto',
+        choose: 'hk1',
         all: [
           {
             groupName: '香港',

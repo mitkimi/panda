@@ -8,13 +8,13 @@ const APP = {
     return {
       tools: [
         {
-          icon: '',
+          icon: require('./images/nas.png'),
           name: 'NAS',
           desc: '没什么想说的',
           url: 'http://nas.ipietech.com'
         },
         {
-          icon: '',
+          icon: require('./images/unknow.png'),
           name: '神秘工具',
           desc: '更多神秘工具即将上线，敬请期待',
           url: null
