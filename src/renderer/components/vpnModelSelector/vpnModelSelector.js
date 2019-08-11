@@ -13,8 +13,9 @@ const APP = {
   mounted () {},
   methods: {
     handleSelectItem (item) {
-      console.log(item)
-      this.mode = item.key
+      // console.log(item)
+      // this.mode = item.key
+      this.$emit('selectMode', item.key)
     }
   }
 }

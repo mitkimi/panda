@@ -1,4 +1,5 @@
 import PanelCard from '../../components/panelCard'
+
 const APP = {
   components: {
     PanelCard

@@ -10,33 +10,27 @@
       </div>
       <div class="section">
         <div class="title">本地网络</div>
-        <div class="content">IP: 10.1.5.121&nbsp;&nbsp;&nbsp;&nbsp;DNS: 10.1.5.1</div>
+        <div class="content">IP: {{pageData.ip}}</div>
       </div>
       <div class="section">
         <div class="title">线 路</div>
         <div class="content">
-          <a-select defaultValue="auto" style="width: 200px" @change="handleChange">
-            <a-select-option value="auto">自动选择</a-select-option>
-            <a-select-opt-group label="香港">
-              <a-select-option value="hk1">HK-ALI1</a-select-option>
-              <a-select-option value="hk2">HK-ALI1</a-select-option>
-            </a-select-opt-group>
-            <a-select-opt-group label="美国">
-              <a-select-option value="us1">SF-BWG</a-select-option>
-            </a-select-opt-group>
-            <a-select-opt-group label="中国大陆">
-              <a-select-option value="cn1">CN-ALI1</a-select-option>
-              <a-select-option value="cn2">CN-ALI2</a-select-option>
-            </a-select-opt-group>
-            <a-select-opt-group label="内网">
-              <a-select-option value="zgc1">中关村</a-select-option>
-            </a-select-opt-group>
-          </a-select>
+          <Select v-model="lane.choose" style="width:200px">
+            <OptionGroup v-for="(item,index) in lane.all" :key="index" :label="item.groupName">
+              <Option class="option" v-for="(host,hindex) in item.children" :key="hindex" :value="host.name">
+                <span>{{ host.name }}</span>
+                <span class="speed" v-if="host.speed < 0" style="color: #F56C6C">( 超时 )</span>
+                <span class="speed" v-if="host.speed >=0 && host.speed < 100" style="color: #67C23A">( {{host.speed}}ms )</span>
+                <span class="speed" v-if="host.speed >= 100 && host.speed <= 230" style="color: #E6A23C">( {{host.speed}}ms )</span>
+                <span class="speed" v-if="host.speed > 230" style="color: #F56C6C">( {{host.speed}}ms )</span>
+              </Option>
+            </OptionGroup>
+          </Select>
         </div>
       </div>
       <div class="section mode">
         <div class="title">模 式</div>
-        <vpn-model-selector :mode="currentMode" :options="modeOptions"></vpn-model-selector>
+        <vpn-model-selector :mode="currentMode" :options="modeOptions" @selectMode="handleSelectMode"></vpn-model-selector>
       </div>
     </a-spin>
   </div>

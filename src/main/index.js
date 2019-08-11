@@ -1,7 +1,7 @@
 'use strict'
 
 import { app, BrowserWindow } from 'electron'
-
+// webFrame.setZoomLevelLimits(1, 1)
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
@@ -25,7 +25,16 @@ function createWindow () {
     },
     height: 550,
     useContentSize: true,
-    width: 860
+    width: 860,
+    resizable: false // 禁止调整窗口大小
+  })
+
+  // 禁止缩放
+  let webContents = mainWindow.webContents
+  webContents.on('did-finish-load', () => {
+    webContents.setZoomFactor(1)
+    webContents.setVisualZoomLevelLimits(1, 1)
+    webContents.setLayoutZoomLevelLimits(0, 0)
   })
 
   mainWindow.loadURL(winURL)

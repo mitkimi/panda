@@ -2,6 +2,9 @@ import Vue from 'vue'
 import axios from 'axios'
 import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
+// import ref from 'vue-ref'
+import iView from 'iview'
+import 'iview/dist/styles/iview.css'
 
 import App from './App'
 import router from './router'
@@ -12,13 +15,8 @@ Vue.http = Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
 Vue.use(Antd)
-
-const appInfo = {
-  appId: 'cli_9dbc613a9d7f510c',
-  appSecret: 'sYd8DoGq26o5oSJEdyXKLd6fcfD1Qi2A'
-
-}
-Vue.prototype.$appInfo = appInfo
+Vue.use(iView)
+// Vue.use(ref, { name: 'ant-ref' })
 
 /* eslint-disable no-new */
 new Vue({

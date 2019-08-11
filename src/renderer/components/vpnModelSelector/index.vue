@@ -1,6 +1,6 @@
 <template>
   <div class="component">
-    <div class="select-item" v-for="item,index in options" :key="index" @click="handleSelectItem(item)">
+    <div class="select-item" v-for="(item,index) in options" :key="index" @click="handleSelectItem(item)">
       <div class="item current" v-if="item.key === mode">
         <div class="icon"><a-icon :type="item.icon" /></div>
         <div class="content">

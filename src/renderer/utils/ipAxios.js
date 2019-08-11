@@ -1,9 +1,12 @@
 import axios from 'axios'
 import qs from 'qs'
+import apiUrl from './api.js'
+import router from '../router'
 
 const useToken = false
 
 axios.defaults.timeout = 200000
+axios.defaults.baseURL = apiUrl.url
 axios.defaults.withCredentials = false
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 if (useToken) {
@@ -31,6 +34,7 @@ export function fetch (url, params = {}) {
         resolve(response)
       })
       .catch((err) => {
+        console.log('err==>', err)
         reject(err)
       })
   })
@@ -68,11 +72,9 @@ export function larkGet (url, params = {}) {
         resolve(response)
       })
       .catch(function (error) {
-        console.log('error===>', error.response.status)
-        if (error.response.status === 400) {
-          resolve(error)
-          return
-        }
+        router.push({
+          path: '/signin'
+        })
         reject(error)
       })
   })

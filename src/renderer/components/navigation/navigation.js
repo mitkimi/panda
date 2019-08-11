@@ -1,6 +1,7 @@
 const APP = {
   data () {
     return {
+      openKeys: [],
       current: ['welcome']
     }
   },

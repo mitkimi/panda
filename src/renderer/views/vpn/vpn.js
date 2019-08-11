@@ -1,11 +1,15 @@
 import VpnModelSelector from '../../components/vpnModelSelector'
-
+const ip = require('ip')
 const APP = {
   components: {
     VpnModelSelector
   },
   data () {
     return {
+      pageData: {
+        ip: '0.0.0.0',
+        dns: '0.0.0.0'
+      },
       currentMode: 0,
       modeOptions: [
         {
@@ -40,10 +44,52 @@ const APP = {
       vpnSwitch: false,
       isShowSpeed: false,
       spinText: '正在连接...',
-      isLoading: false
+      isLoading: false,
+      lane: {
+        choose: 'auto',
+        all: [
+          {
+            groupName: '香港',
+            children: [
+              {
+                name: 'hk1',
+                speed: 32
+              },
+              {
+                name: 'hk2',
+                speed: 35
+              }
+            ]
+          },
+          {
+            groupName: '北美',
+            children: [
+              {
+                name: 'sf-1',
+                speed: 107
+              }
+            ]
+          },
+          {
+            groupName: '中关村',
+            children: [
+              {
+                name: '中关村1',
+                speed: 2094
+              },
+              {
+                name: '中关村2',
+                speed: -1
+              }
+            ]
+          }
+        ]
+      }
     }
   },
-  mounted () {},
+  mounted () {
+    this.getIP()
+  },
   methods: {
     onChange (checked) {
       console.log(`a-switch to ${checked}`)
@@ -64,6 +110,12 @@ const APP = {
           this.isShowSpeed = false
         }, 1000)
       }
+    },
+    getIP () {
+      this.pageData.ip = ip.address()
+    },
+    handleSelectMode (key) {
+      this.currentMode = key
     }
   }
 }
