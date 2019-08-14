@@ -1,4 +1,4 @@
-import { fetch } from '../../utils/ipAxios'
+import { fetch, post } from '../../utils/ipAxios'
 const APP = {
   data () {
     return {
@@ -26,7 +26,7 @@ const APP = {
         code
       }
       const url = '/passport/sheckUserSignStatus'
-      const { data: res } = await fetch(url, params)
+      const { data: res } = await post(url, params)
       if (res.code === 0) {
         localStorage.expires_in = res.data.expires_in * 1000
         localStorage.open_id = res.data.open_id

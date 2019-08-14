@@ -1,7 +1,5 @@
 import axios from 'axios'
-import qs from 'qs'
 import apiUrl from './api.js'
-import router from '../router'
 
 const useToken = false
 
@@ -48,57 +46,11 @@ export function fetch (url, params = {}) {
  */
 export function post (url, params = {}) {
   return new Promise((resolve, reject) => {
-    axios.post(url, qs.stringify(params, { indices: false }))
-      .then(function (response) {
-        resolve(response)
-      })
-      .catch(function (error) {
-        reject(error)
-      })
-  })
-}
-
-/**
- * 封装larkget方法
- * @param url
- * @param data
- * @returns {Promise}
- */
-export function larkGet (url, params = {}) {
-  return new Promise((resolve, reject) => {
-    axios.get(url, params)
-      .then(function (response) {
-        console.log('response===>', response)
-        resolve(response)
-      })
-      .catch(function (error) {
-        router.push({
-          path: '/signin'
-        })
-        reject(error)
-      })
-  })
-}
-
-/**
- * 封装larkpost方法
- * @param url
- * @param data
- * @returns {Promise}
- */
-export function larkPost (url, params = {}) {
-  return new Promise((resolve, reject) => {
     axios.post(url, params)
       .then(function (response) {
-        console.log('response===>', response)
         resolve(response)
       })
       .catch(function (error) {
-        console.log('error===>', error.response.status)
-        if (error.response.status === 400) {
-          resolve(error)
-          return
-        }
         reject(error)
       })
   })

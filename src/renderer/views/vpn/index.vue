@@ -15,6 +15,7 @@
       <div class="section">
         <div class="title">线 路</div>
         <div class="content">
+          
           <Select v-model="lane.choose" style="width:200px">
             <OptionGroup v-for="(item,index) in lane.all" :key="index" :label="item.groupName">
               <Option class="option" v-for="(host,hindex) in item.children" :key="hindex" :value="host.name">
