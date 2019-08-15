@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <h4>应用库</h4>
+    <h2>应用库</h2>
     <div class="section">
       <div class="title">办公软件</div>
       <div class="content">

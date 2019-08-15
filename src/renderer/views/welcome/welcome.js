@@ -13,7 +13,7 @@ const APP = {
       },
       statusCheck: [
         {
-          icon: 'wifi',
+          icon: 'md-wifi',
           name: '网络链接',
           status: 'pending',
           pending: '正在检测网络链接',
@@ -21,7 +21,7 @@ const APP = {
           fail: '无法接入网络，请检查网络链接'
         },
         {
-          icon: 'retweet',
+          icon: 'md-attach',
           name: '内网联通性',
           status: 'pending',
           pending: '正在检测内网联通性',
@@ -37,7 +37,7 @@ const APP = {
         //   fail: '发现高危问题，请注意防范'
         // },
         {
-          icon: 'link',
+          icon: 'md-link',
           name: 'VPN',
           status: 'pending',
           pending: '正在检测 VPN 链接状态',

@@ -18,7 +18,7 @@ const APP = {
     handleClick (e) {
       console.log('click', e)
       this.$router.push({
-        path: `/dashboard/${e.key}`
+        path: `/dashboard/${e}`
       })
     },
     titleClick (e) {

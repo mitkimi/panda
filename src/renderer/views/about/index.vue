@@ -1,25 +1,22 @@
 <template>
   <div class="page">
-    <h4>关 于</h4>
+    <h2>关 于</h2>
     <div class="section">
       <div class="title">Panda Tools</div>
       <div class="version" v-if="hasNewVersion === 'loading'">
-        <div class="loading-container"><a-spin /> </div>
+        <div class="loading-container"><Spin /> </div>
         <div class="info-container">
           <div>正在检查新版本...</div>
           <div>当前版本: {{version}} {{name}}</div>
         </div>
       </div>
       <div class="new-version" v-if="hasNewVersion === 'true'">
-        <a-tooltip placement="right">
-          <template slot="title">
-            <span>发现新版本</span>
-          </template>
-          <a-badge dot style="line-height: 30px">
+        <Tooltip placement="right" content="发现新版本">
+          <badge dot style="line-height: 30px">
             Panda {{newVersion.version}} {{newVersion.name}}
-          </a-badge>
-        </a-tooltip>
-        <a-button type="primary" @click="openWindow(newVersion.url)">下载更新</a-button>
+          </Badge>
+        </Tooltip>
+        <Button type="primary" @click="openWindow(newVersion.url)">下载更新</Button>
       </div>
       
       <div v-if="hasNewVersion === 'false'">

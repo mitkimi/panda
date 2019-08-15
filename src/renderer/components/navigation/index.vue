@@ -1,19 +1,31 @@
 <template>
   <div class="component">
-    <a-menu
-      @click="handleClick"
-      style="width: 100%"
-      :defaultSelectedKeys="current"
-      :openKeys.sync="openKeys"
-      mode="inline"
-    >
-      <a-menu-item key="welcome"><a-icon type="smile" /> 欢 迎</a-menu-item>
-      <a-menu-item key="vpn"><a-icon type="link" /> VPN</a-menu-item>
-      <a-menu-item key="tools"><a-icon type="tool" /> 工具箱</a-menu-item>
-      <a-menu-item key="apps"><a-icon type="appstore" /> 应用库</a-menu-item>
-      <a-menu-item key="setting"><a-icon type="setting" /> 设 置</a-menu-item>
-      <a-menu-item key="about"><a-icon type="question" /> 关 于</a-menu-item>
-    </a-menu>
+    <Menu active-name="current" @on-select="handleClick" style="width: 100%">
+      <MenuItem name="welcome">
+        <Icon type="md-arrow-round-forward" />
+        欢 迎
+      </MenuItem>
+      <MenuItem name="vpn">
+        <Icon type="md-link" />
+        VPN
+      </MenuItem>
+      <MenuItem name="tools">
+        <Icon type="md-bulb" />
+        工具箱
+      </MenuItem>
+      <MenuItem name="apps">
+        <Icon type="md-apps" />
+        应用库
+      </MenuItem>
+      <MenuItem name="setting">
+        <Icon type="md-cog" />
+        设 置
+      </MenuItem>
+      <MenuItem name="about">
+        <Icon type="md-flag" />
+        关 于
+      </MenuItem>
+    </Menu>
   </div>
 </template>
 

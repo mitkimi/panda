@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <h4>工具箱</h4>
+    <h2>工具箱</h2>
     <div class="section">实用工具汇聚于此</div>
     <div class="section">
       <div class="content">
