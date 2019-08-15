@@ -1,6 +1,7 @@
 'use strict'
 
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, Menu, Tray } from 'electron'
+const path = require('path')
 // webFrame.setZoomLevelLimits(1, 1)
 /**
  * Set `__static` path to static files in production
@@ -11,6 +12,7 @@ if (process.env.NODE_ENV !== 'development') {
 }
 
 let mainWindow
+let tray
 const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`
@@ -44,12 +46,34 @@ function createWindow () {
   })
 }
 
-app.on('ready', createWindow)
-
+app.on('ready', () => {
+  tray = new Tray(path.join(__dirname, '../renderer/assets/icon-20.png'))
+  const contextMenu = Menu.buildFromTemplate([
+    {
+      label: '显示主界面',
+      click: () => {
+        mainWindow.show()
+      }
+    },
+    {
+      label: '退 出',
+      click: () => {
+        mainWindow = null
+      }
+    }
+  ])
+  tray.setToolTip('Panda Tools')
+  tray.setContextMenu(contextMenu)
+  createWindow()
+})
+app.on('close', (e) => {
+  mainWindow.hide()
+  e.preventDefault() // 禁止关闭
+})
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
+  // if (process.platform !== 'darwin') {
+  //   app.quit()
+  // }
 })
 
 app.on('activate', () => {

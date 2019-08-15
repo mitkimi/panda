@@ -8,7 +8,7 @@ const APP = {
     return {
       office: [
         {
-          icon: '',
+          icon: require('./images/chrome.png'),
           name: 'Chrome',
           desc: '更易用、更安全、更快速的高效浏览器',
           linkText: '去下载',
