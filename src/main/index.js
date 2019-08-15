@@ -41,8 +41,13 @@ function createWindow () {
 
   mainWindow.loadURL(winURL)
 
-  mainWindow.on('closed', () => {
+  mainWindow.on('closed', (e) => {
     mainWindow = null
+  })
+  mainWindow.on('close', (e) => {
+    mainWindow.hide()
+    mainWindow.setSkipTaskbar(true)
+    e.preventDefault() // 禁止关闭
   })
 }
 
@@ -58,7 +63,7 @@ app.on('ready', () => {
     {
       label: '退 出',
       click: () => {
-        mainWindow = null
+        app.quit()
       }
     }
   ])
@@ -66,10 +71,7 @@ app.on('ready', () => {
   tray.setContextMenu(contextMenu)
   createWindow()
 })
-app.on('close', (e) => {
-  mainWindow.hide()
-  e.preventDefault() // 禁止关闭
-})
+
 app.on('window-all-closed', () => {
   // if (process.platform !== 'darwin') {
   //   app.quit()
