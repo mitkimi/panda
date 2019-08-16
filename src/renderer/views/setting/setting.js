@@ -19,7 +19,7 @@ const APP = {
           this.$router.push({
             path: '/signin'
           })
-          this.$message.success('您已安全退出 Panda Tools')
+          this.$Message.success('您已安全退出 Panda Tools')
         }
       })
     }

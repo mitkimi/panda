@@ -32,13 +32,13 @@ const APP = {
         localStorage.open_id = res.data.open_id
         localStorage.access_token = res.data.access_token
         localStorage.code = code
-        this.$message.success('登录成功')
+        this.$Message.success('登录成功')
         this.getUserInfo() // 获取用户信息
         this.$router.push({
           path: '/dashboard/welcome'
         })
       } else {
-        this.$message.error(res.msg)
+        this.$Message.error(res.msg)
       }
     },
     async getUserInfo () {
