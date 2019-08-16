@@ -1,6 +1,6 @@
 <template>
   <div class="component">
-    <Menu active-name="current" @on-select="handleClick" style="width: 100%">
+    <Menu :active-name="current" @on-select="handleClick" style="width: 100%">
       <MenuItem name="welcome">
         <Icon type="md-arrow-round-forward" />
         欢 迎

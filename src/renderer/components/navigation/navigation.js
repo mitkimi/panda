@@ -1,18 +1,13 @@
 const APP = {
   data () {
     return {
-      openKeys: [],
-      current: ['welcome']
+      current: 'welcome'
     }
   },
   mounted () {
-    const currentRouteStr = this.$route.path.substring(1, this.$route.path.length)
-    this.current = [currentRouteStr]
-  },
-  watch: {
-    openKeys (val) {
-      console.log('openKeys', val)
-    }
+    // const currentRouteStr = this.$route.path.split('/')
+    // this.current = currentRouteStr[currentRouteStr.length - 1]
+    // console.log(this.current)
   },
   methods: {
     handleClick (e) {
@@ -20,9 +15,6 @@ const APP = {
       this.$router.push({
         path: `/dashboard/${e}`
       })
-    },
-    titleClick (e) {
-      console.log('titleClick', e)
     }
   }
 }
